@@ -11,7 +11,9 @@ public:
             temp.push_back({it.second,it.first});
         }
 
-        sort(temp.begin(),temp.end(),greater<pair<int,int>>());
+        sort(temp.begin(),temp.end(),[](auto& a , auto& b){
+            return a.first>b.first;
+        });
 
         for(int i=0;i<k;i++){
             ans.push_back(temp[i].second);
