@@ -1,20 +1,20 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int, int> mp;
-       
-        // Loop through the array
-        for(int i = 0; i < nums.size(); i++){
-            // Check if the complement of the current number exists in the map
-            if(mp.find(target - nums[i]) == mp.end())
-                // If not, add the current number and its index to the map
-                mp[nums[i]] = i;
-            else
-                // If yes, return the indices of the current number and its complement
-                return {mp[target - nums[i]], i};
+        unordered_map<int,int> mpp;
+        vector<int> ans;
+        
+        for(int i=0; i<nums.size(); i++) {
+            int remaining = target - nums[i];
+            // Check if the complement is already in the map and it's not the same index
+            if(mpp.find(remaining) != mpp.end()) {
+                ans.push_back(mpp[remaining]); // Index of the complement
+                ans.push_back(i); // Current index
+                break;
+            }
+            // Store the index of the current element
+            mpp[nums[i]] = i;
         }
- 
-        // If no pair is found, return {-1, -1} as a default value
-        return {-1, -1};
+        return ans;
     }
 };
