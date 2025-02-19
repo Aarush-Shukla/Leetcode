@@ -7,7 +7,7 @@ public:
 
         if(dp[index]!=-1)return dp[index];
         for(int i=1;i<=nums[index];i++){
-            if(solve(i+index,n,nums,dp)==true){
+            if(solve(index+i,n,nums,dp)==true){
                 return true;
             }
         }
