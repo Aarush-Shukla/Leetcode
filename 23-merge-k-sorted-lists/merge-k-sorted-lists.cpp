@@ -19,24 +19,24 @@ public:
             l1->next=mergeTwoLinkedList(l1->next, l2);
             return l1;
         }else{
-             l2->next=mergeTwoLinkedList(l1, l2->next);
+            l2->next=mergeTwoLinkedList(l1, l2->next);
             return l2;
         }
     }
 
-    ListNode* Partition_and_Merge(int start,int end,vector<ListNode*>& lists,int k){
+    ListNode* Partition_and_Merge(int start,int end,vector<ListNode*>& lists){
         if(start>end) return NULL ;
         if(start==end) return lists[start];
         int mid=start+(end-start)/2;
 
-        ListNode* Lx = Partition_and_Merge(start,mid,lists,k);
-        ListNode* Ly = Partition_and_Merge(mid+1,end,lists,k);
+        ListNode* Lx = Partition_and_Merge(start,mid,lists);
+        ListNode* Ly = Partition_and_Merge(mid+1,end,lists);
         return mergeTwoLinkedList(Lx, Ly);
     }
 
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        int k=lists.size();
-        return Partition_and_Merge(0,k-1,lists,k);
+        int n=lists.size();
+        return Partition_and_Merge(0,n-1,lists);
 
     }
 };
