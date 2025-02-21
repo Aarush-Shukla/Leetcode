@@ -7,14 +7,14 @@ public:
             int cntzeroes=0;
             int cntones=0;
             for(auto num : nums){
-                if((num & temp)==0){
+                if((num & temp)==0){ // checking if Kth bit is 0 or 1
                     cntzeroes++;
                 }else{
                     cntones++;
                 }
             }
 
-            if(cntones%3 !=0 ){
+            if(cntones%3 !=0 ){ //set the bit
                 result= (result | temp);
             }
         }
