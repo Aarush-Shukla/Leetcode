@@ -16,7 +16,7 @@ public:
 
     bool canJump(vector<int>& nums) {
         int n=nums.size();
-        vector<int> dp(n+1,-1);
+        vector<int> dp(n,-1);
         return solve(0,n,nums,dp);
     }
 };
